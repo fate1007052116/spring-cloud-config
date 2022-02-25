@@ -69,6 +69,39 @@ luo@DESKTOP-83PJLKP ~> vi .gitconfig
 # 添加以下内容，包含刚刚的 配置文件
 [core]
         excludesfile=/home/luo/.gitignore
-
+# 如果是 windows 路径，例如 C:\Users\aa\project
+# 则需要替换为： C:/Users/aa/project
+# windows 环境下，反斜线 需要被替换为 斜线        
 # 之后使用 git 命令就能全局生效了        
+```
+### 3、git 从 https 协议，切换到 ssh 协议
+```shell
+
+# 切换到 https 协议
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master) > git remote set-url origin https://github.do/https://github.com/fate1007052116/spring-cloud-conf
+ig.git
+
+# 查看 git 远程仓库地址
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master) > git remote -v
+# 切换成功
+origin  https://github.do/https://github.com/fate1007052116/spring-cloud-config.git (fetch)
+origin  https://github.do/https://github.com/fate1007052116/spring-cloud-config.git (push)
+# pull 也成功，虽然期间有重定向（因为安装了油猴的 github 加速插件，用的是github镜像站）
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master)> git pull
+warning: redirecting to https://github-do.panbaidu.cn//https://github.com/fate1007052116/spring-cloud-config.git/
+Already up to date.
+
+# 从 https 协议，切换到 ssh 协议
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master)> git remote set-url origin git@github.com:fate1007052116/spring-cloud-config.git
+
+# 查看远程仓库地址
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master)> git remote -v
+origin  git@github.com:fate1007052116/spring-cloud-config.git (fetch)
+origin  git@github.com:fate1007052116/spring-cloud-config.git (push)
+
+# pull 拉取测试
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master)> git pull
+Already up to date.
+luo@DESKTOP-83PJLKP ~/spring-cloud-config (master)>
+
 ```
