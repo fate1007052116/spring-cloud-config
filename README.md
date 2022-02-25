@@ -1,5 +1,7 @@
-# 使用ssh进行github免密登录
-## 1、创建公钥和私钥
+# git 新增笔记
+
+## 一、使用ssh进行github免密登录
+### 1、创建公钥和私钥
 ```shell
 #生成 ssh-rsa 的公钥和私钥
 # -t 为所使用的的算法
@@ -43,8 +45,30 @@ luo@DESKTOP-83PJLKP ~/.ssh>
 ```
 
 
-## 2、将创建的 私钥 上传到 github
+### 2、将创建的 私钥 上传到 github
 > https://github.com/settings/keys
 > 点击， New SSH Key
 
-## 3、之后就可以快乐的使用免密验证了，前提是使用的 ssh，而不是 https
+### 3、之后就可以快乐的使用免密验证了，前提是使用的 ssh，而不是 https
+
+
+## 二、git 全局配置 git ignore
+```shell
+# 在任意目录下创建一个 .gitignore 文件（文件名可以随意）
+luo@DESKTOP-83PJLKP ~> echo .idea > .gitignore
+# 查看内容
+luo@DESKTOP-83PJLKP ~> cat .gitignore
+.idea
+# 打开 git 的配置文件
+luo@DESKTOP-83PJLKP ~> vi .gitconfig
+
+
+[user]
+        email = 1007052116@qq.com
+        name = luo
+# 添加以下内容，包含刚刚的 配置文件
+[core]
+        excludesfile=/home/luo/.gitignore
+
+# 之后使用 git 命令就能全局生效了        
+```
